@@ -27,16 +27,16 @@ def main():
 		loc = LocationInfo(name='SJC', region='CA, USA', timezone='America/Los_Angeles',latitude=37.3713439, longitude=-121.944675)
 		s = sun(loc.observer, date=Date(today.year, today.month, today.day), tzinfo=loc.timezone)
 
-		now_unixtime = time.mktime(now.timetuple())
-		sunset_unixtime = time.mktime(s["sunset"].timetuple())
-		sunrise_unixtime = time.mktime(s["sunrise"].timetuple())
+		sunset = time.mktime(s["sunset"].timetuple())
+		sunrise = time.mktime(s["sunrise"].timetuple())
+		now_unix = time.mktime(now.timetuple())
 
-		if(now_unixtime < sunset_unixtime):
+		if (now_unix > sunset) && (now_unix < sunrise):
 			enabled = False
-		if(now_unixtime > sunrise_unixtime):
+		else:
 			enabled = True
 
-		if enabled:
+		if(enabled):
 			current_time =  now.strftime("%m/%d/%Y : %H:%M:%S")
 			lcd.clear()
 			lcd.write_string(current_time)

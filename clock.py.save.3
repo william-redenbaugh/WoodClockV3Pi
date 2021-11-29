@@ -31,10 +31,11 @@ def main():
 		sunset_unixtime = time.mktime(s["sunset"].timetuple())
 		sunrise_unixtime = time.mktime(s["sunrise"].timetuple())
 
-		if(now_unixtime < sunset_unixtime):
+		if (now_unixtime > sunset_unixtime):
 			enabled = False
 		if(now_unixtime > sunrise_unixtime):
-			enabled = True
+			enabled = True:
+
 
 		if enabled:
 			current_time =  now.strftime("%m/%d/%Y : %H:%M:%S")
