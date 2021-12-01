@@ -38,10 +38,9 @@ def main():
 
 		if enabled:
 			current_time =  now.strftime("%m/%d/%Y : %H:%M:%S")
-			lcd.clear()
-			lcd.write_string(current_time)
 			show_message(device, current_time, fill="white", font=proportional(CP437_FONT))
-			time.sleep(7)
-
-
+		current_time = "Date And Time: " + now.strftime("%m/%d/%Y : %H:%M:%S")
+		lcd.clear()
+		lcd.write_string(current_time)
+		time.sleep(5)
 main()
